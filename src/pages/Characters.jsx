@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Characters = () => {
   const [data, setData] = useState({});
@@ -9,7 +10,6 @@ const Characters = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get("http://localhost:3000/characters");
-        console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -30,22 +30,24 @@ const Characters = () => {
       <div className="cards-content">
         {data.results.map((characters) => {
           return (
-            <div className="cards">
-              <div className="e">
-                <div className="hero-title">
-                  <div className="border-detail">
-                    <h3>{characters.name}</h3>
+            <Link to={`/comics/${characters._id}`} key={characters._id}>
+              <div className="cards">
+                <div className="e">
+                  <div className="hero-title">
+                    <div className="border-detail">
+                      <h3>{characters.name}</h3>
+                    </div>
                   </div>
                 </div>
+                <img
+                  src={`${characters.thumbnail.path}/portrait_uncanny.${characters.thumbnail.extension}`}
+                  alt=""
+                />
+                <div className="background-desc">
+                  <p>{characters.description}</p>
+                </div>
               </div>
-              <img
-                src={`${characters.thumbnail.path}/portrait_uncanny.${characters.thumbnail.extension}`}
-                alt=""
-              />
-              <div className="background-desc">
-                <p>{characters.description}</p>
-              </div>
-            </div>
+            </Link>
           );
         })}
       </div>

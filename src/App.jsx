@@ -6,6 +6,7 @@ import Header from "./pages/Header";
 import Home from "./pages/Home";
 import Characters from "./pages/Characters";
 import Comics from "./pages/Comics";
+import ComicsById from "./pages/ComicsById";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/characters" element={<Characters />} />
         <Route path="/comics" element={<Comics />} />
+        <Route path="/comics/:characterId" element={<ComicsById />} />
       </Routes>
     </Router>
   );
