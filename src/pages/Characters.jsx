@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const Characters = () => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,6 +21,10 @@ const Characters = () => {
     fetchData();
   }, []);
 
+  const handleSearch = (event) => {
+    setSearch(event.target.value);
+  };
+
   return isLoading ? (
     <p>Loading...</p>
   ) : (
@@ -27,29 +32,46 @@ const Characters = () => {
       <div>
         <h2>CHARACTERS</h2>
       </div>
+      <div className="search">
+        <input
+          type="text"
+          name="search"
+          value={search}
+          onChange={handleSearch}
+          placeholder="Search a character by name..."
+        />
+      </div>
       <div className="cards-content">
-        {data.results.map((characters) => {
-          return (
-            <Link to={`/comics/${characters._id}`} key={characters._id}>
-              <div className="cards">
-                <div className="e">
-                  <div className="hero-title">
-                    <div className="border-detail">
-                      <h3>{characters.name}</h3>
+        {data.results
+          .filter((characters) =>
+            characters.name.toLowerCase().includes(search.toLowerCase())
+          )
+          .map((characters) => {
+            return (
+              <Link to={`/comics/${characters._id}`} key={characters._id}>
+                <div className="cards">
+                  <div className="copy-card">
+                    {characters.description ? (
+                      <div className="background-desc">
+                        <p>{characters.description}</p>
+                      </div>
+                    ) : null}
+                  </div>
+                  <div className="e">
+                    <div className="hero-title">
+                      <div className="border-detail">
+                        <h3>{characters.name}</h3>
+                      </div>
                     </div>
                   </div>
+                  <img
+                    src={`${characters.thumbnail.path}/portrait_uncanny.${characters.thumbnail.extension}`}
+                    alt=""
+                  />
                 </div>
-                <img
-                  src={`${characters.thumbnail.path}/portrait_uncanny.${characters.thumbnail.extension}`}
-                  alt=""
-                />
-                <div className="background-desc">
-                  <p>{characters.description}</p>
-                </div>
-              </div>
-            </Link>
-          );
-        })}
+              </Link>
+            );
+          })}
       </div>
     </main>
   );

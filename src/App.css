@@ -54,11 +54,11 @@ button {
   height: 70px;
   width: 220px;
   border: solid black 5px;
+  cursor: pointer;
 }
 
 .marvel-img {
   height: 500px;
-  width: 1200px;
   position: absolute;
   margin-bottom: 100px;
   display: flex;
@@ -75,9 +75,9 @@ button {
   display: flex;
   flex-wrap: wrap;
   padding: 10px;
-  gap: 25px;
+  gap: 90px;
   justify-content: center;
-  margin-top: 100px;
+  margin-top: 90px;
 }
 
 .cards {
@@ -85,7 +85,12 @@ button {
   width: 245px;
   height: 370px;
   border-radius: 28px;
-  box-shadow: 0px 0px 17px red;
+  box-shadow: 0px 0px 50px red;
+  transition: transform 0.2s;
+}
+
+.cards:hover {
+  transform: scale(1.07);
 }
 
 h2 {
@@ -143,10 +148,16 @@ h3 {
 .background-desc {
   background-color: white;
   color: black;
-  height: 150px;
   width: 230px;
   border-radius: 20% 20% 25% 25%;
   border: black solid 2px;
+  position: absolute;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
 }
 
 .spiderman-img,
@@ -194,4 +205,85 @@ h3 {
 .spiderman-img:hover,
 .thanos-img:hover {
   display: none;
+}
+
+.copy-card {
+  display: flex;
+  align-items: flex-end;
+  width: 245px;
+  height: 370px;
+  border-radius: 28px;
+  position: absolute;
+}
+
+.background-desc p {
+  font-size: 12px;
+  text-align: center;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  margin-top: 23px;
+}
+
+input {
+  width: 317px;
+  height: 41px;
+  border-radius: 15px;
+  border: red solid 2px;
+}
+
+.caroussel {
+  display: flex;
+  margin-top: 60px;
+  overflow-x: scroll;
+  gap: 30px;
+}
+
+.comic-card {
+  color: white;
+}
+
+.comic-card p {
+  text-align: center;
+  background-color: red;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 10px;
+}
+
+.comic-card img {
+  border: solid 2px red;
+}
+
+.comic-title {
+  border-radius: 10px 10px 0 0;
+}
+
+.comic-desc {
+  border-radius: 0 0 10px 10px;
+}
+
+footer {
+  height: 160px;
+  border-top: 2px solid red;
+  background-color: black;
+  position: relative;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer span {
+  font-size: 50px;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+a {
+  text-decoration: none;
+  color: red;
 }

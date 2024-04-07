@@ -38,12 +38,6 @@ const Home = () => {
         <Link to="/comics">
           <button>Comics</button>
         </Link>
-        <Link to="/characters">
-          <button>Characters</button>
-        </Link>
-        <Link to="/comics">
-          <button>Comics</button>
-        </Link>
       </div>
     </main>
   );

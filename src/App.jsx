@@ -1,8 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 
+// import des components
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
 // import des pages
-import Header from "./pages/Header";
 import Home from "./pages/Home";
 import Characters from "./pages/Characters";
 import Comics from "./pages/Comics";
@@ -18,6 +21,7 @@ function App() {
         <Route path="/comics" element={<Comics />} />
         <Route path="/comics/:characterId" element={<ComicsById />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }
